@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Админ панель: заказы";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Список игр</h3>
+    </div>
+    <div class="panel-body">
+        <div style=" margin-left: 500px;  ">
+            <table class="table-striped table-condensed  table-bordered" style=" float: left;border-radius: 5px;">
+                <tr>
+                    <th class="text-right">ID заказа</th>
+                    <th>Дата заказа</th>
+
+                    <th class="text-center">Статус заказа</th>
+                </tr>
+                @{ foreach (var o in ViewBag.Orders)
+                    {
+                        <tr>
+
+                            <td>@o.OrderId</td>
+                            <td>@o.DateOfOrder</td>
+
+                            <td>@o.StatusOfOrder</td>
+
+                        </tr>
+                    } }
+
+            </table>
+            <table class="table-striped table-condensed  table-bordered" style=" float: left;border-radius: 5px;">
+                <tr>
+                    <th class="text-right">Фамилия</th>
+                    <th>Имя</th>
+                    <th class="text-right">Отчество</th>
+                    <th class="text-center">Адрес</th>
+                </tr>
+                @{ foreach (var o in ViewBag.UserDatas)
+                    {
+                        <tr>
+
+                            <td>@o.FirstName</td>
+                            <td>@o.SecondName</td>
+                            <td>@o.MiddleName</td>
+                            <td>@o.Addres</td>
+                        </tr>
+                    } }
+
+            </table>
+            </div>
+        </div>
+
+    </div>
+<div class="panel-footer">
+    @Html.ActionLink("Вернуться к списку", "Index", null, new
+           {
+               @class = "btn btn-default"
+           })
+</div>

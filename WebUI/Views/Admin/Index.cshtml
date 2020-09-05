@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Админ панель: список товаров";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Список игр</h3>
+    </div>
+    <div class="panel-body">
+        <div style=" margin-left: 500px;  ">
+            <table class="table-striped table-condensed  table-bordered" style=" float: left;border-radius: 5px;">
+                <tr>
+                    <th class="text-right">Действие</th>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th class="text-right">Цена</th>
+                    <th class="text-center">Количество</th>
+
+
+                </tr>
+
+
+
+
+                @{ foreach (var item in ViewBag.Characteristics)
+                    {
+                                <tr>
+                                    <td>@Html.ActionLink("Изменить", "Edit", new { id = item.CharacteristicId })</td>
+                                    <td class="text-right">@item.CharacteristicId</td>
+                                    <td class="text-right">@item.Name</td>
+                                    <td class="text-right">@item.Price.ToString("# руб")</td>
+                                    <td>10 </td>
+
+
+                                </tr>
+                    }
+
+
+                }
+            </table>
+            <table class=" table-striped table-condensed table-bordered" style="  float: left;border-radius: 5px;
+">
+                <tr>
+                    
+                </tr>
+                @{ foreach (var c in ViewBag.FirstPrices)
+                    {
+                                <tr>
+
+                                    <td >10 </td>
+
+                                </tr>
+                    }
+                }
+            </table>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Добавить игру", "Create", null,
+            new { @class = "btn btn-default" })
+        @Html.ActionLink("Заказы", "Orders", null,
+           new { @class = "btn btn-default" })
+        @Html.ActionLink("Вернуться на главную страницу", "../Index", null, new
+        {
+            @class = "btn btn-default"
+        })
+    </div>
+</div>
